@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주차 과제</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+            font-family: 'Nanum Myeonjo', serif
+        }
+
+        body {
+            width: 800px;
+            margin: 100px 400px 300px 350px;
+        }
+
+        .card-img-top {
+            width: 400px;
+            display: block;
+            margin: 0px auto;
+        }
+
+
+        .card {
+            width: 800px;
+            border-color: transparent;
+            margin: auto;
+        }
+
+        .card-text {
+            padding-top: 10px;
+        }
+
+
+        .input-list {
+            width: 600px;
+            margin: 20px auto;
+        }
+
+        .more-info {
+            margin-top: 20px;
+        }
+
+        .button {
+            display: block;
+            margin: 30px auto;
+            padding: 5px 10px 5px 10px;
+        }
+    </style>
+
+    <script>
+
+        function hey() {
+            alert('주문이 완료되었습니다');
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <wrap class="page">
+
+        <div class="card" style="width: 700px;">
+            <img class="card-img-top"
+                src="https://d7hftxdivxxvm.cloudfront.net/?resize_to=fit&width=400&height=540&quality=80&src=https%3A%2F%2Fd32dm0rphc51dk.cloudfront.net%2Fu9t_gUIjzPUxAkPPhTBQMg%2Flarge.jpg"
+                alt="Card image cap">
+            <div class="card-body">
+                <h2 class="card-title" style="font-weight: 900;">I Love You by Damien Hirst</h2>
+                <h6 class="card-price" style="font-weight: 700;">가격: $20,000 - 30,000 /ea</h6>
+                <p class="card-text"><br>
+                    데미안 허스트의 'I Love You' 실크스크린 프린트 Red/Gold Butterfly 리미티드 에디션입니다. 작가의 친필 넘버링과 사인, 인증서
+                    및 액자 포함 금액이며, I Love You 시리즈로 검색하시면 더욱 많은 작업을 보실 수 있습니다. <br>
+                </p>
+                <p class="more-info" style="font-size: small;"> 
+                    <br>
+                    I Love You Red/Gold Butterfly , 2015 <br>
+                    Silkscreen, Gold Leaf, Foil Block<br>
+                    44 1/2 × 32 3/4 × 1 3/4 in<br>
+                    113 × 83.2 × 4.4 cm<br>
+                    Edition of 14<br>
+                    Image Rights: Arton, Inc.
+                </p>
+            </div>
+        </div>
+
+        <div class="input-list" style="font-weight: 700;" , style="text-align: center;">
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">주문자 성함</button>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">수량</button>
+                </div>
+                <select class="custom-select" id="inputGroupSelect03">
+                    <option selected>--수량을 선택하세요--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">주소</button>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">전화번호</button>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+            </div>
+
+        </div>
+
+        <button class="button" style="font-weight: 700;" onclick="hey()">주문하기</button>
+
+    </wrap>
+
+</body>
+
+</html>
