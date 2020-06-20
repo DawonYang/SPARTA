@@ -74,6 +74,22 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+
+            $.ajax({
+                type: "GET",
+                url: 'https://api.manana.kr/exchange/rate.json',
+                data: {},
+                success: function (response) {
+                    let rate = response[1]['rate'];
+                    $('#wd').text(rate)
+                }
+            })
+            listing()
+
+        });
+
+
+        $(document).ready(function () {
             $('#orders-box').html('');
             listing();
         });
@@ -100,20 +116,19 @@
             } else if (contact == '') {
                 alert('전화번호를 입력해주세요')
                 return
-            }
-
-            $.ajax({
-                type: 'POST', // 타입을 작성합니다.
-                url: '/shop', // url을 작성합니다.
-                data: { name_give: name, quantity_give: quantity, address_give: address, contact_give: contact }, // data를 작성합니다. },
-                success: function (response) {
-                    if (response['result'] == 'success') {
-                        alert(response['msg']);
-                        window.location.reload();
+            } else {
+                $.ajax({
+                    type: 'POST', // 타입을 작성합니다.
+                    url: '/shop_save', // url을 작성합니다.
+                    data: { name_give: name, quantity_give: quantity, address_give: address, contact_give: contact }, // data를 작성합니다. },
+                    success: function (response) {
+                        if (response['result'] == 'success') {
+                            alert(response['msg']);
+                            window.location.reload();
+                        }
                     }
-                }
-            });
-
+                });
+            }
         }
 
 
@@ -123,30 +138,27 @@
             // 3. 요청 성공했을 때 리뷰를 올바르게 화면에 나타내기
             $.ajax({
                 type: "GET",
-                url: "/shop",
+                url: "/shop_show",
                 data: {},
                 success: function (response) {
                     if (response['result'] == 'success') {
 
-                        let shops = response['msg'];
+                        let shop = response['all_shop']
 
                         for (let i = 0; i < shops.length; i++) {
-                            let name = shops[i]['name']
-                            let quantity = shops[i]['inputGroupSelect03']
-                            let address = shops[i]['address']
-                            let contact = shops[i]['contact']
+                            let name = shop[i]['name']
+                            let quantity = shop[i]['inputGroupSelect03']
+                            let address = shop[i]['address']
+                            let contact = shop[i]['contact']
 
                             let temp_html = `<tr>
-                                            <td>${name}</td>
+                                            <th scope="row">${name}</th>
                                             <td>${quantity}</td>
                                             <td>${address}</td>
                                             <td>${contact}</td>
                                             </tr>`
                             $('#orders-box').append(temp_html)
                         }
-                        // 2. 성공했을 때 리뷰를 올바르게 화면에 나타내기
-                    } else {
-                        alert('올바른 정보를 입력해주세요');
                     }
                 }
             });
@@ -167,6 +179,7 @@
             <div class="card-body">
                 <h2 class="card-title" style="font-weight: 900;">I Love You by Damien Hirst</h2>
                 <h6 class="card-price" style="font-weight: 700;">가격: $20,000 - 30,000 /ea</h6>
+                <div class="dollar">환율: <span id="wd">1000</span>원/달러</div>
                 <p class="card-text"><br>
                     데미안 허스트의 'I Love You' 실크스크린 프린트 Red/Gold Butterfly 리미티드 에디션입니다. 작가의 친필 넘버링과 사인, 인증서
                     및 액자 포함 금액이며, I Love You 시리즈로 검색하시면 더욱 많은 작업을 보실 수 있습니다. <br>
@@ -183,7 +196,7 @@
             </div>
         </div>
 
-        <div class="input-list" style="font-weight: 700;" , style="text-align: center;">
+        <div class="orders-box" style="font-weight: 700;" , style="text-align: center;">
 
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -222,8 +235,10 @@
             </div>
 
         </div>
+        <div class="btn-box">
+            <button class="button" style="font-weight: 700;" onclick="hey()">주문하기</button>
+        </div>
 
-        <button class="button" style="font-weight: 700;" onclick="hey()">주문하기</button>
         <div class="orders">
             <table class="table">
                 <thead>
@@ -235,13 +250,6 @@
                     </tr>
                 </thead>
                 <tbody id="orders-box">
-                    <tr>
-                        <td>이름</td>
-                        <td>수량</td>
-                        <td>주소</td>
-                        <td>전화번호</td>
-
-                    </tr>
                 </tbody>
             </table>
         </div>
