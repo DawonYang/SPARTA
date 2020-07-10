@@ -129,9 +129,18 @@
             margin-right: auto;
             border-color: transparent;
             background-color: transparent;
-            display:block
+            border: 0;
+            outline: 0;
+            display: block
         }
     </style>
+
+    <script>
+        function hey() {
+            console.log('ok');
+        }
+    </script>
+
 </head>
 
 <body>
@@ -145,7 +154,7 @@
         </ul>
         <br>
         <br>
-        <button class="btn">
+        <button class="btn" onclick="hey()">
             <h2 class="title">My<br>Beans</h2>
         </button>
         <br>
