@@ -6,6 +6,10 @@
     <!-- Webpage Title -->
     <title>Hello, world!</title>
 
+    <meta property="og:title" content="스파르타 메모장" />
+    <meta property="og:description" content="나홀로 메모장" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.jpg') }}" />
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,7 +60,7 @@
                             let desc = articles[i]['desc']
                             let url = articles[i]['url']
                             let comment = articles[i]['comment']
-                            
+
                             make_card(comment, desc, image, title, url)
                         }
                     }
@@ -76,7 +80,7 @@
                                      <p class="card-text comment">${comment}</p>
                                  </div>
                             </div>`
-            $('#cards-box').append(temp_html)   
+            $('#cards-box').append(temp_html)
 
         }
 
