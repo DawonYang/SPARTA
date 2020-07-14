@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Example of setting the most used properties of the survey, jQuery Survey Library Example</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://unpkg.com/jquery"></script>
+    <script src="https://surveyjs.azureedge.net/1.7.19/survey.jquery.js"></script>
+    <link href="https://surveyjs.azureedge.net/1.7.19/modern.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="./index.css">
+
+
+
+
+    <script type="text/javascript" src="./index.js">
+
+       
+
+        Survey
+            .StylesManager
+            .applyTheme("modern");
+
+
+        var json = {
+            title: "나의 원두 취향 찾기",
+            pages: [
+                {
+                    title: "신맛",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "acidity",
+                            title: "신맛",
+                            hasOther: true,
+                            isRequired: true,
+                            choices: [
+                                "커피는 신맛보다 고소하고 쌉쌀한 맛에 마신다",
+                                "신맛이 감칠맛을 더할 정도면 충분하다",
+                                "베리같은 상큼한 산미가 좋다",
+                                "나는 시트러스 계열 정도의 강렬한 산미에만 반응한다"
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "아로마",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "aromas",
+                            title: "아로마",
+                            colCount: 5,
+                            isRequired: true,
+                            choices: [
+                                "꽃향기가 맴돌면 좋겠다",
+                                "상큼한 베리류가 내 스타일",
+                                "고소한 견과류",
+                                "초콜렛의 달콤 쌉싸름한 향",
+                                "커피의 향은 별로 중요하지 않다"
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "단맛",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "sweetness",
+                            title: "단맛",
+                            colCount: 3,
+                            isRequired: true,
+                            choices: [
+                                "달콤함이 혀끝에 맴돌면 좋겠다",
+                                "단맛은 크게 중요하지 않다",
+                                "커피는 쓴맛에 먹는 것"
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "쓴맛",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "strength",
+                            title: "쓴맛",
+                            colCount: 2,
+                            isRequired: true,
+                            choices: [
+                                "쓴맛이 싫어서 연하게 마시는 편이다",
+                                "왠지 어른스러운 기분이 드는 쌉쌀한 쓴 맛이 좋다"
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "바디감",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "body",
+                            title: "바디감",
+                            colCount: 3,
+                            isRequired: true,
+                            choices: [
+                                "가벼운 살랑살랑한 커피가 좋다",
+                                "전체적인 맛의 균형감이 잡힌 커피가 좋다",
+                                "묵직하게 가슴을 때리는 커피가 좋다"
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "마지막 질문",
+                    questions: [
+                        {
+                            type: "checkbox",
+                            name: "final_q",
+                            title: "마지막 질문",
+                            colCount: 5,
+                            isRequired: true,
+                            choices: [
+                                "설문에 충실한 커피를 추천받고 싶다",
+                                "왠지 이번엔 새로운 맛에 도전해보고싶다",
+                                "질문들이 너무 귀찮았고 난 이정도로 커피를 음미하며 마실 여유가 없다",
+                                "나는 아이스 커피만 마신다",
+                                "내 취향은 아직 잘 모르겠으니 우선 유명하고 비싼 원두커피를 마셔보고 싶다",
+                            ]
+                        }
+                    ]
+                }, {
+                    title: "정보",
+                    questions: [
+                        {
+                            type: "text",
+                            name: "name",
+                            title: "Name:"
+                        }, {
+                            type: "text",
+                            name: "email",
+                            title: "Your e-mail"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        window.survey = new Survey.Model(json);
+
+        survey
+            .onComplete
+            .add(function (result) {
+                document
+                    .querySelector('#surveyResult')
+                    .textContent = "Result JSON:\n" + JSON.stringify(result.data, null, 3);
+            });
+
+        survey.showProgressBar = 'bottom';
+
+        $("#surveyElement").Survey({ model: survey });
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="surveyElement" style="display:inline-block;width:100%;"></div>
+    <div id="surveyResult"></div>
+
+    <script type="text/javascript" src="./index.js"></script>
+
+</body>
+
+</html>
